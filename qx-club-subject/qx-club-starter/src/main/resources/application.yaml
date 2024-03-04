@@ -1,0 +1,32 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/qx_club?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=PRC&characterEncoding=UTF8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: root
+    password: YUSV+GDKxsSgEAZR7zYIeVJIKWMjnFEaAgOanP4Tx8KlPIawL84NOjWGN+JA/b6sadkF8ZirNAww/TNFs12URw==
+    druid:
+      initial-size: 20
+      min-idle: 20
+      max-active: 100
+      max-wait: 60000
+      connection-properties: config.decrypt=true;config.decrypt.key=${publicKey} #开启druid连接时使用publicKey
+      stat-view-servlet: #druid监控面板信息
+        enabled: true
+        url-pattern: /druid/** #druid监控地址
+        login-username: admin #druid账号
+        login-password: youzhi.. #druid密码
+      filter:
+        stat:
+          enabled: true
+          slow-sql-millis: 2000 #超过2秒的sql都标记为慢sql
+          log-slow-sql: true #打印慢sql
+        wall:
+          enabled: true #开启防火墙
+        config:
+          enabled: true #开启解密
+publicKey: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJv8Qgt+T893hrdBABgkSsx1PxMrhKpy4uFYNTm+DOf/YuTT4S6dZtLsW70ZZb2aSu9zgy9mJKvzHVOrFVVRcUECAwEAAQ==
+logging:
+  config: classpath:log4j2-spring.xml #log4j2日志配置
