@@ -87,7 +87,6 @@ public interface SubjectInfoDao {
      * @return
      */
     int countByCondition(@Param("subjectInfo") SubjectInfo subjectInfo, @Param("categoryId") Long categoryId, @Param("labelId") Long labelId);
-
     /**
      * 条件分页查询
      *
